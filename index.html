@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>replit</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo:wght@100&display=swap" rel="stylesheet">
+    <style>
+        .add-cart {
+            cursor: pointer;
+            padding: 10px;
+            bottom: 0;
+            right: 0;
+            color: white;
+            background-color: black;
+            float: right;
+        }
+
+        img {
+            height: 300px;
+            width: 300px;
+        }
+
+        .section-title {
+            font-size: 30px;
+            font-weight: 600;
+            text-align: center;
+            color: white;
+        }
+
+        .header {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+        }
+
+        .container {
+            max-width: 1068px;
+            margin: auto;
+            width: 100%;
+        }
+
+        .shop {
+            margin-top: 8px;
+        }
+
+        .shop-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+            gap: 20px;
+            background-color: #FFFFFF99;
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .logo {
+            font-size: 40px;
+            font-weight: 300;
+            margin-left: 35px;
+        }
+
+        .price {
+            font-weight: 600;
+        }
+
+        #scholar {
+            text-decoration: none;
+        }
+
+        h2 {
+            font-size: 25px;
+        }
+
+        #cart-icon {
+            font-size: 40px;
+            cursor: pointer;
+        }
+
+        body {
+            font-family: 'Exo', sans-serif;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+            margin: 0px;
+            padding: 0px;
+            background-image: url('https://wallpaper.dog/large/20491977.jpg')
+        }
+
+        .product-box:hover {
+            padding: 8px 7px 8px 7px;
+            border: 2px solid;
+            background-color: #f5f5f599;
+        }
+
+        .product-box {
+            margin: 7.5px 7.5px 7.5px 7.5px;
+            padding: 8px 7px 8px 7px;
+            background-color: #f3f3f399;
+        }
+
+        .product-box {
+            margin-bottom: 10px;
+        }
+
+        .cart {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: auto;
+            padding: 20px;
+            background: gray;
+            box-shadow: -2px 0 4px hsl(0 4% 15% / 10%);
+            transition: 0.3s;
+            overflow: scroll;
+        }
+
+        .detail-box {
+            display: grid;
+        }
+
+        .cart-product-title {
+            font-size: 1rem;
+            transform: transform uppercase;
+        }
+
+        .cart-price {
+            font-weight: 500;
+        }
+
+        .cart-quantity {
+            border: 1px solid white;
+            width: 2.4rem;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .cart-remove {
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .total {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 1.5rem;
+            border-top: 1px solid white;
+        }
+
+        .total-title {
+            font-size: 1rem;
+            font-weight: 400px;
+        }
+
+        .total-price {
+            margin-left: 0.5rem;
+        }
+
+        .btn-buy {
+            display: flex;
+            margin: 1.5rem auto 0 auto;
+            padding: 12px 20px;
+            border: none;
+            background: black;
+            color: white;
+            font-size: 1rem;
+            font-weight: 400px;
+            cursor: pointer;
+            ;
+        }
+
+        #close-cart {
+            position: absolute;
+            top: 1rem;
+            right: 0.8rem;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+
+        }
+
+        .cart.active {
+            right: 0;
+        }
+
+        .customer-details {
+            background-color: gray;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+            gap: 20px;
+            background-color: #FFFFFF99;
+            margin: 20px 620px 20px 120px;
+        }
+
+        .form-label {
+            margin-left: 15px;
+        }
+
+        #name {
+            margin-left: 16px;
+        }
+
+        #email {
+            margin-left: 19px;
+        }
+
+        .row-details {
+            margin-left: 18px;
+        }
+
+        .orderButton {
+            display: flex;
+            margin: 10px auto 10px auto;
+            padding: 12px 20px;
+            border-radius: 15px;
+            background: black;
+            color: white;
+            font-size: 1rem;
+            font-weight: 400px;
+            cursor: pointer;
+            ;
+        }
+
+        .orderButton:hover {
+            background-color: #4d4d4d;
+        }
+
+        .post {
+            color: white;
+            padding: 1.25rem;
+            margin-top: 1.25rem;
+            margin-bottom: 1.25rem;
+            border: 1px solid #e9ecef;
+            border-left-width: .25rem;
+            border-radius: .25rem;
+            border-left-color: #000000;
+            font-family: 'Sriracha', cursive;
+        }
+
+        #cartcont{
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <div class="nav">
+            <h1 class="logo">Isko Foodie</h1>
+            <h1><a href="about the company.html" style="text-decoration: none">Scholar's Menu</a></h1>
+            <i class='bx bx-shopping-bag' id="cart-icon"></i>
+        </div>
+
+        <div class="cart">
+            <h2 class="cart-title">Added To Cart</h2>
+            <div class="cart-content">
+                <div class="cart-box">
+                    <img src="https://www.abc.net.au/cm/rimage/4921402-1x1-large.jpg?v=2" alt="" class="cart-img">
+                    <div class="detail-box">
+                        <div class="cart-product-title">Best Seller</div>
+                        <div class="cart-price"></div>
+                        <input type="number" value="1" class="cart-quantity">
+                    </div>
+                    <i class='bx bxs-trash-alt cart-remove'></i>
+                </div>
+            </div>
+            <div class="total">
+                <div class="total-title">Total</div>
+                <div class="total-price">P0</div>
+            </div>
+
+            <button type="button" class="btn-buy ">Buy Now</button>
+
+            <i class='bx bx-x' id="close-cart"></i>
+        </div>
+    </header>
+    <section class="shop container">
+        <h2 class="section-title">
+            Drinks
+        </h2>
+        <div class="shop-content">
+            <div class="product-box">
+                <img src="https://www.abc.net.au/cm/rimage/4921402-1x1-large.jpg?v=2" alt="espresso"
+                    class="product-img">
+                <h2 class="product-title">Espresso</h2>
+                <span class="price">P50</span>
+                <i onclick="espresso()" class='bx bx-shopping-bag add-cart'></i>
+            </div>
+            <div class="product-box">
+                <img src="https://www.mygingergarlickitchen.com/wp-content/rich-markup-images/1x1/1x1-coconut-milk-banana-strawberry-smoothie-topped-with-toasted-coconut.jpg"
+                    alt="strawberry smoothie" class="product-img">
+                <h2 class="product-title">Strawberry Smoothie</h2>
+                <span class="price">P60</span>
+                <i onclick="strawberry()" class='bx bx-shopping-bag add-cart'></i>
+            </div>
+            <div class="product-box">
+                <img src="https://sweetrusticbakes.com/wp-content/uploads/2021/09/1x1-banana-peach-smoothie-1.jpg"
+                    alt="banana smoothie" class="product-img">
+                <h2 class="product-title">Banana Smoothie</h2>
+                <span class="price">P50</span>
+                <i onclick="banana()" class='bx bx-shopping-bag add-cart'></i>
+            </div>
+            <div class="product-box">
+                <img src="https://i0.wp.com/animmigrantstaste.com/wp-content/uploads/2020/07/Sugar-Free-Mint-Lemonade-1x1-1.jpg?fit=3024%2C3024&ssl=1"
+                    alt="Lemonade" class="product-img">
+                <h2 class="product-title">Lemonade</h2>
+                <span class="price">P30</span>
+                <i onclick="lemonade()" class='bx bx-shopping-bag add-cart'></i>
+            </div>
+            <div class="product-box">
+                <img src="https://images.media-allrecipes.com/userphotos/5478432.jpg" class="product-img">
+                <h2 class="product-title">Pink Lemonade</h2>
+                <span class="price">P30</span>
+                <i onclick="pinklem()" class='bx bx-shopping-bag add-cart'></i>
+            </div>
+            <div class="product-box">
+                <img src="https://circlekcambodia.com/wp-content/uploads/2021/07/8846002481704-320x320.jpg" alt="Water"
+                    class="product-img">
+                <h2 class="product-title">Water</h2>
+                <span class="price">P10</span>
+                <i onclick="water()" class='bx bx-shopping-bag add-cart'></i>
+            </div>
+        </div>
+    </section>
+    <section class="shop container">
+        <h2 class="section-title">
+            Burgers
+        </h2>
+        <div class="shop-content">
+            <div class="product-box">
+                <img src="https://assets.epicurious.com/photos/5c745a108918ee7ab68daf79/1:1/w_1600,c_limit/Smashburger-recipe-120219.jpg"
+                    alt="cheeseburger" class="product-img">
+                <h2 class="product-title">Cheesy Burger</h2>
+                <span class="price">P60</span>
+                <i onclick="cheesy()" class='bx bx-shopping-bag add-cart'></i>
+            </div>
+            <div class="product-box">
+                <img src="https://www.jollibee.com.bn/assets/images/products/44/300x300/yumburger-with-cheese-ala-carte.jpg"
+                    alt="regular burger" class="product-img">
+                <h2 class="product-title">Regular Burger</h2>
+                <span class="price">P40</span>
+                <i onclick="regular()" class='bx bx-shopping-bag add-cart'></i>
+            </div>
+            <div class="product-box">
+                <img src="https://assets.bonappetit.com/photos/5b919cb83d923e31d08fed17/1:1/w_2560%2Cc_limit/basically-burger-1.jpg"
+                    alt="special burger" class="product-img">
+                <h2 class="product-title">Special Burger</h2>
+                <span class="price">P100</span>
+                <i onclick="special()" class='bx bx-shopping-bag add-cart'></i>
+            </div>
+            <div class="product-box">
+                <img src="https://www.bakingbeauty.net/wp-content/uploads/2020/02/pizza-burger-500x500.jpg"
+                    alt="pizza burger" class="product-img">
+                <h2 class="product-title">Pizza Burger</h2>
+                <span class="price">P150</span>
+                <i onclick="pizza()" class='bx bx-shopping-bag add-cart'></i>
+            </div>
+            <div class="product-box">
+                <img src="https://assets.epicurious.com/photos/5e4c65cfd57b3b000872c652/1:1/w_1600,c_limit/VeggieBurger_RECIPE_IG_021320_516_VOG_final.jpg"
+                    alt="vegan burger" class="product-img">
+                <h2 class="product-title">Vegan Burger</h2>
+                <span class="price">P200</span>
+                <i onclick="vegan()" class='bx bx-shopping-bag add-cart'></i>
+            </div>
+            <div class="product-box">
+                <img src="https://e7.pngegg.com/pngimages/342/529/png-clipart-bacon-cheeseburger-cheeseburger-bacon-hamburger-wrap-hot-dog-bacon-food-cheese.png"
+                    alt="bacon burger" class="product-img">
+                <h2 class="product-title">Bacon Burger</h2>
+                <span class="price">P150</span>
+                <i onclick="bacon()" class='bx bx-shopping-bag add-cart'></i>
+            </div>
+        </div>
+    </section>
+    <section class="shop container">
+        <h2 class="section-title">
+            Dessert
+        </h2>
+        <div class="shop-content">
+            <div class="product-box">
+                <img src="https://goldbelly.imgix.net/uploads/showcase_media_asset/image/143892/Stan_s-Donuts-Apple-Cider-Cake-Donuts-9.15.21-72ppi-1x1-12.jpg?ixlib=rails-3.0.2"
+                    alt="donut" class="product-img">
+                <h2 class="product-title">Donut</h2>
+                <span class="price">P20</span>
+                <i onclick="donut()" class='bx bx-shopping-bag add-cart'></i>
+            </div>
+            <div class="product-box">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_KzYqEfb-JThzrENuuVYGX9pFXW4mF82fFw&usqp=CAU"
+                    alt="apple pie" class="product-img">
+                <h2 class="product-title">Apple pie</h2>
+                <span class="price">P120</span>
+                <i onclick="apple()" class='bx bx-shopping-bag add-cart'></i>
+            </div>
+            <div class="product-box">
+                <img src="https://www.recipetineats.com/wp-content/uploads/2021/06/French-Lemon-Tart_5-main-SQ.jpg"
+                    alt="lemon tart" class="product-img">
+                <h2 class="product-title">Lemon Tart</h2>
+                <span class="price">P40</span>
+                <i onclick="lemontart()" class='bx bx-shopping-bag add-cart'></i>
+            </div>
+            <div class="product-box">
+                <img src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F04%2F26%2F244964-SimpleCakePops-mfs-1x1-0254.jpg"
+                    class="product-img">
+                <h2 class="product-title">Cake Pops</h2>
+                <span class="price">P10</span>
+                <i onclick="cakepops()" class='bx bx-shopping-bag add-cart'></i>
+            </div>
+            <div class="product-box">
+                <img src="https://www.pagkaingpinoytv.com/wp-content/uploads/2016/04/graham-balls-s-500x500.jpg"
+                    class="product-img">
+                <h2 class="product-title">Graham Balls</h2>
+                <span class="price">P10</span>
+                <i onclick="graham()" class='bx bx-shopping-bag add-cart'></i>
+            </div>
+            <div class="product-box">
+                <img src="https://images.aws.nestle.recipes/original/f2d1b0e0b9ea2382433d8347c9b296b5_Chocolate_Caramel_Brownies_28703_400x400_NEW.jpg"
+                    alt="brownies" class="product-img">
+                <h2 class="product-title">Brownies</h2>
+                <span class="price">P20</span>
+                <i onclick="brown()" class='bx bx-shopping-bag add-cart'></i>
+            </div>
+        </div>
+    </section>
+    <section class="shop container">
+        <h2 class="section-title">
+            Others
+        </h2>
+        <div class="shop-content">
+            <div class="product-box">
+                <img src="https://www.wandercooks.com/wp-content/uploads/2019/09/takoyaki-recipe-ft-500x500.jpg"
+                    alt="takoyaki" class="product-img">
+                <h2>Takoyaki(8pcs)</h2>
+                <span class="price">P100</span>
+                <i onclick="takoyaki()" class='bx bx-shopping-bag add-cart'></i>
+            </div>
+            <div class="product-box">
+                <img src="https://www.fifteenspatulas.com/wp-content/uploads/2011/09/French-Fries-Recipe.jpg"
+                    alt="fries" class="product-img">
+                <h2 class="product-title">Fries</h2>
+                <span class="price">P40</span>
+                <i onclick="fries()" class='bx bx-shopping-bag add-cart'></i>
+            </div>
+            <div class="product-box">
+                <img src="https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/Chicken-Nuggets_EXPS_SDON18_1500_E06_13_1b.jpg"
+                    alt="nuggets" class="product-img">
+                <h2 class="product-title">Nuggets(10 pcs)</h2>
+                <span class="price">P150</span>
+                <i onclick="nuggets()" class='bx bx-shopping-bag add-cart'></i>
+            </div>
+            <div class="product-box">
+                <img src="https://assets.bonappetit.com/photos/58c9589584ebdb0ec55e365b/1:1/w_2560%2Cc_limit/hard-boiled-eggs.jpg"
+                    alt="boiled egg" class="product-img">
+                <h2 class="product-title">Boiled Egg</h2>
+                <span class="price">P10</span>
+                <i onclick="boiled()" class='bx bx-shopping-bag add-cart'></i>
+            </div>
+            <div class="product-box">
+                <img src="https://www.kawalingpinoy.com/wp-content/uploads/2014/01/karekare4-1-1-500x500.jpg"
+                    alt="kare-kare" class="product-img">
+                <h2 class="product-title">Kare-Kare</h2>
+                <span class="price">P150</span>
+                <i onclick="kare()" class='bx bx-shopping-bag add-cart'></i>
+            </div>
+            <div class="product-box">
+                <img src="https://www.thespruceeats.com/thmb/SX7AEAMQwKV676yMFKWoVSE95Go=/1000x1000/smart/filters:no_upscale()/pasta-carbonara-recipe-5210168-hero-01-80090e56abc04ca19d88ebf7fad1d157.jpg"
+                    alt="carbonara" class="product-img">
+                <h2 class="product-title">Carbonara</h2>
+                <span class="price">P150</span>
+                <i onclick="carbonara()" class='bx bx-shopping-bag add-cart'></i>
+            </div>
+        </div>
+    </section>
+    <div class="customer-details">
+        <div class="row-details">
+            <h2><b>Delivery Details:</b></h2>
+            <form id="former" action="http://sirjm.infinityfreeapp.com/checkout.php" method="get">
+                <h4>Check Out</h4>
+                <div class="my-3">
+                    <label for="txtName" class="form-label">Name</label>
+                    <input id="txtName" class="form-control" name="cust_name" type="text" placeholder="e.g. John Smith">
+                </div>
+                <div class="my-3">
+                    <label for="txtEmail" class="form-label">Email</label>
+                    <input id="txtEmail" class="form-control" name="cust_email" type="email"
+                        placeholder="e.g. jsmith@example.com">
+                </div>
+                <div class="my-3">
+                    <label for="txtAddress" class="form-label">Address</label>
+                    <input id="txtAddress" class="form-control" name="cust_addr" type="text"
+                        placeholder="e.g. Lily Hill, Mabalacat, Pampanga">
+                </div>
+                <div class="my-3 form-label">
+                    <input id="cartcont" class="form-control" name="cust_order" type="text">
+                </div>
+                <input type="submit" value="Check Out" onclick="submitCart()" class="btn btn-primary">
+            </form>
+            <h5>My Cart</h5>
+            <hr>
+            <p><b id="price"></b></p>
+            <div id="timeline">
+            </div>
+        </div>
+    </div>
+    <script>
+        var cust_order = [];
+        var price = 0;
+        var m = "";
+        var total = 0;
+
+        if (localStorage.getItem('cust_order') == null) {
+
+        } else {
+            var cust_orderJSON = localStorage.getItem('cust_order');
+            cust_order = JSON.parse(cust_orderJSON);
+        }
+
+
+        function display() {
+            total = 0;
+            document.getElementById('timeline').innerHTML = "";
+            for (var i = 0; i < cust_order.length; i++) {
+                document.getElementById('timeline').innerHTML += '<div class="post"><p>' + cust_order[i].prod_name + '</p> <p>PHP ' + cust_order[i].prod_price + '</p><button class="btn btn-sm btn-outline-danger" onclick="removeAt(' + i + ')">Delete</button></div>';
+
+                total = total + cust_order[i].prod_price;
+                document.getElementById('price').innerHTML = 'Total Price: PHP ' + total;
+            }
+
+            if (document.getElementById('timeline').innerHTML == "") {
+                document.getElementById('price').innerHTML = 'Total Price: PHP 0';
+            }
+        }
+        display();
+
+        function add() {
+            var p = { prod_name: m, prod_price: price };
+            cust_order.push(p);
+            save();
+            display();
+        }
+
+        function submitCart() {
+            for (var i = 0; i < cust_order.length; i++) {
+                cust_order.splice(i);
+            }
+            localStorage.setItem('cust_order', JSON.stringify(cust_order));
+
+        }
+
+        function removeAt(i) {
+            cust_order.splice(i, 1);
+            localStorage.setItem('cust_order', JSON.stringify(cust_order));
+            display();
+
+        }
+
+        function save() {
+            localStorage.setItem('cust_order', JSON.stringify(cust_order));
+            if (localStorage.getItem('cust_order') == '[]') {
+                document.getElementById('cartcont').value = "";
+            } else {
+                document.getElementById('cartcont').value = JSON.stringify(cust_order);
+            }
+
+        }
+        
+        //Drinks
+        function espresso() {
+            m = "Espresso";
+            price = 50;
+            add();
+        }
+
+        function strawberry() {
+            m = "Strawberry Smoothie";
+            price = 60;
+            add();
+        }
+
+        function banana() {
+            m = "Banana Smoothie";
+            price = 50;
+            add();
+        }
+        
+        function lemonade() {
+            m = "Lemonade";
+            price = 30;
+            add();
+        }
+        
+        function pinklem() {
+            m = "Pink Lemonade";
+            price = 30;
+            add();
+        }
+
+        function water() {
+            m = "Water";
+            price = 10;
+            add();
+        }
+
+        //Burgers
+        function cheesy() {
+            m = "Cheesy Burger";
+            price = 60;
+            add();
+        }
+
+        function regular() {
+            m = "Regular Burger";
+            price = 40;
+            add();
+        }
+
+        function special() {
+            m = "Special Burger";
+            price = 100;
+            add();
+        }
+
+        function pizza() {
+            m = "Pizza Burger";
+            price = 150;
+            add();
+        }
+
+        function vegan() {
+            m = "Vegan Burger";
+            price = 200;
+            add();
+        }
+
+        function bacon() {
+            m = "Bacon Burger";
+            price = 150;
+            add();
+        }
+
+        //Dessert
+        function donut() {
+            m = "Donut";
+            price = 20;
+            add();
+        }
+
+        function apple() {
+            m = "Apple Pie";
+            price = 120;
+            add();
+        }
+
+        function lemontart() {
+            m = "Lemon Tart";
+            price = 40;
+            add();
+        }
+        
+        function cakepops() {
+            m = "Cake Pops";
+            price = 10;
+            add();
+        }
+
+        function graham() {
+            m = "Graham Balls";
+            price = 10;
+            add();
+        }
+
+        function brown() {
+            m = "Brownies";
+            price = 20;
+            add();
+        }
+
+        //Others
+        function takoyaki() {
+            m = "Takoyaki(8pcs)";
+            price = 100;
+            add();
+        }
+
+        function fries() {
+            m = "Fries";
+            price = 40;
+            add();
+        }
+
+        function nuggets() {
+            m = "Nuggets(10pcs)";
+            price = 150;
+            add();
+        }
+
+        function boiled() {
+            m = "Boiled Egg";
+            price = 10;
+            add();
+        }
+
+        function kare() {
+            m = "Kare-Kare";
+            price = 150;
+            add();
+        }
+
+        function carbonara() {
+            m = "Carbonara";
+            price = 150;
+            add();
+        }
+    </script>
+
+</body>
+
+</html>
